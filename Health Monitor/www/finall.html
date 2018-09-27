@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript">
+  function myfunc(name){
+    var url = "http://localhost/scripts/json4.php/?name="+name;
+  
+        $.getJSON(url, function(result) {
+            
+            console.log(result);
+            $.each(result, function(i, field) {
+               
+               var name = field.Service_Name;
+                var status = field.Status;
+                var type = field.Service_Type;
+                //var time = field.TIME;
+                var dname = field.Display_Name;
+                var csd = field.Can_Shut_Down;
+                var cs = field.Can_Stop;
+                var cpc = field.Can_Pause_Continue;
+                var sdo = field.Services_Depended_On;
+                document.getElementById("label1").innerHTML = name;
+                document.getElementById("label2").innerHTML = status;
+                document.getElementById("label3").innerHTML = type;
+                document.getElementById("label4").innerHTML = dname;
+                document.getElementById("label5").innerHTML = csd;
+                document.getElementById("label6").innerHTML = cs;
+                document.getElementById("label7").innerHTML = cpc;
+                document.getElementById("label8").innerHTML = sdo;
+                console.log(name);
+                });
+        });
+  }
+    
+
+
+    $(document).ready(setInterval(function() {
+        var url = "http://localhost/scripts/json.php";
+	
+        $.getJSON(url, function(result) {
+            var tr;
+            $('#td').html('');
+            console.log(result);
+            $.each(result, function(i, field) {
+                tr = $('<tr/>');
+                tr = $('<tr/>');
+               var name = field.Service_Name;
+                var status = field.Status;
+                var type = field.Service_Type;
+                var time = field.TIME;
+                var dname = field.Display_Name;
+                var csd = field.Can_Shut_Down;
+                var cs = field.Can_Stop;
+                var cpc = field.Can_Pause_Continue;
+                var sdo = field.Services_Depended_On;
+                tr.append("<td>" + name + "</td>");
+		
+		if(status=="Running")
+                	tr.append("<td><span class='glyphicon glyphicon-ok' style='color:rgb(72,181,163); font-size: 25px;'>" + "</span></td>");
+		else
+			tr.append("<td> <span class='glyphicon glyphicon-remove' style='color:red; font-size: 25px;'>"  + "</span></td>");
+                tr.append("<td>" + dname + "</td>");
+                tr.append("<td>" + type + "</td>");
+                tr.append("<td>" + time + "</td>");
+                tr.append("<td><button  id = '"+name+"type='button' data-toggle='modal' data-target='#myModal1' onClick='myfunc(\""+name+"\")'>Info</button></td>");
+                 $('#td').append(tr);
+            });
+        });
+    },1000));
+    </script>
+
+    <script type="text/javascript">
+    $(document).ready(setInterval(function() {
+        var url = "http://localhost/scripts/json1.php";
+        $.getJSON(url, function(result) {
+            var tr;
+	$('#td1').html('');
+            console.log(result);
+            
+            $.each(result, function(i, field) {
+                tr = $('<tr/>');
+                tr = $('<tr/>');
+                var name = field.Service_Name;
+                var status = field.Status;
+                var type = field.Service_Type;
+		var time = field.TIME;
+		var dname = field.Display_Name;
+
+                tr.append("<td>" + name + "</td>");
+		
+		if(status=="Running")
+                	tr.append("<td> <span class='glyphicon glyphicon-ok' style='color:rgb(72,181,163); font-size: 25px;'>" + "</span></td>");
+		else
+			tr.append("<td> <span class='glyphicon glyphicon-remove' style='color:red; font-size: 25px;'>"  + "</span></td>");
+                tr.append("<td>" + dname + "</td>");
+                tr.append("<td>" + type + "</td>");
+                tr.append("<td>" + time + "</td>");
+                tr.append("<td><button  id = '"+name+"type='button' data-toggle='modal' data-target='#myModal1' onClick='myfunc(\""+name+"\")'>Info</button></td>");
+               
+                $('#td1').append(tr)
+                
+            });
+        });
+    },1000));
+
+  </script>
+  <script type="text/javascript">
+    $(document).ready(setInterval(function() {
+        var url = "http://localhost/scripts/json3.php";
+        $.getJSON(url, function(result) {
+            var tr;
+  $('#td3').html('');
+            console.log(result);
+            
+            $.each(result, function(i, field) {
+                tr = $('<tr/>');
+                tr = $('<tr/>');
+                var name = field.Service_Name;
+                var status = field.Status;
+                var type = field.Service_Type;
+    		var time = field.TIME;
+    		var dname = field.Display_Name;
+
+                tr.append("<td>" + name + "</td>");
+		
+    if(status=="Running")
+                  tr.append("<td> <span class='glyphicon glyphicon-ok' style='color:rgb(72,181,163); font-size: 25px;'>" + "</span></td>");
+    else
+      tr.append("<td> <span class='glyphicon glyphicon-remove' style='color:red; font-size: 25px;'>"  + "</span></td>");
+                tr.append("<td>" + dname + "</td>");
+                tr.append("<td>" + type + "</td>");
+                tr.append("<td>" + time + "</td>");
+                tr.append("<td><button  id = '"+name+"type='button' data-toggle='modal' data-target='#myModal1' onClick='myfunc(\""+name+"\")'>Info</button></td>");
+               
+                $('#td3').append(tr)
+                
+            });
+        });
+    },1000));
+
+  </script>
+   
+<script type="text/javascript">
+    $(document).ready(setInterval(function() {
+        var url = "http://localhost/scripts/json2.php";
+        $.getJSON(url, function(result) {
+            var tr;
+            $('#td2').html('');
+            console.log(result);
+            
+            $.each(result, function(i, field) {
+                tr = $('<tr/>');
+                tr = $('<tr/>');
+                var name = field.Service_Name;
+                var status = field.Status;
+                var type = field.Service_Type;
+		var time = field.TIME;
+		var dname = field.Display_Name;
+
+                tr.append("<td>" + name + "</td>");
+		
+                if(status=="Running")
+                	tr.append("<td><span class='glyphicon glyphicon-ok' style='color:rgb(72,181,163); font-size: 25px;'>" + "</span></td>");
+		else
+			tr.append("<td> <span class='glyphicon glyphicon-remove' style='color:red; font-size: 25px;'>"  + "</span> </td>");
+                tr.append("<td>" + dname + "</td>");
+                tr.append("<td>" + type + "</td>");
+                tr.append("<td>" + time + "</td>");
+                tr.append("<td><button  id = '"+name+"type='button' data-toggle='modal' data-target='#myModal1' onClick='myfunc(\""+name+"\")'>Info</button></td>");
+               
+                $('#td2').append(tr)
+                
+            });
+        });
+    },1000));
+
+
+/* Close when someone clicks on the "x" symbol inside the overlay */
+function closeNav() {
+    document.getElementById("myNav").style.height = "0%";
+}
+
+
+
+
+
+document.onreadystatechange = function(e)
+{
+  if(document.readyState=="interactive")
+  {
+    var all = document.getElementsByTagName("*");
+    for (var i=0, max=all.length; i < max; i++) 
+    {
+      set_ele(all[i]);
+    }
+  }
+}
+
+function check_element(ele)
+{
+  var all = document.getElementsByTagName("*");
+  var totalele=all.length;
+  var per_inc=100/all.length;
+
+  if($(ele).on())
+  {
+    var prog_width=per_inc+Number(document.getElementById("progress_width").value);
+    document.getElementById("progress_width").value=prog_width;
+    $("#bar1").animate({width:prog_width+"%"},10,function(){
+      if(document.getElementById("bar1").style.width=="100%")
+      {
+        $(".progress").fadeOut("slow");
+      }			
+    });
+  }
+
+  else	
+  {
+    set_ele(ele);
+  }
+}
+
+function set_ele(set_element)
+{
+  check_element(set_element);
+}
+
+
+//var auto_refresh = setInterval( function() { $('#all_apps').load('http://localhost/scripts/json.php').fadeIn("slow"); }, 5); 
+
+$(document).ready(function(){
+    var next = 1;
+    $(".add-more").click(function(e){
+        e.preventDefault();
+        var addto = "#field" + next;
+        var addRemove = "#field" + (next);
+        next = next + 1;
+        var newIn = '<input autocomplete="off" class="input form-control" id="field' + next + '" name="field' + next + '" type="text">';
+        var newInput = $(newIn);
+        var removeBtn = '<button id="remove' + (next - 1) + '" class="btn btn-danger remove-me" >-</button></div><div id="field">';
+        var removeButton = $(removeBtn);
+        $(addto).after(newInput);
+        $(addRemove).after(removeButton);
+        $("#field" + next).attr('data-source',$(addto).attr('data-source'));
+        $("#count").val(next);  
+        
+            $('.remove-me').click(function(e){
+                e.preventDefault();
+                var fieldNum = this.id.charAt(this.id.length-1);
+                var fieldID = "#field" + fieldNum;
+                $(this).remove();
+                $(fieldID).remove();
+            });
+    });
+    
+
+    
+});
+
+function refreshPage(){
+    window.location.reload();
+}
+
+
+  </script>
+
+<meta http-equiv="refresh" content="3000">
+<style>
+
+.progress 
+{
+ position: fixed;
+ left: 0px;
+ top: 0px;
+ width: 100%;
+ height: 100%;
+ z-index: 9999;
+ background-color: white;
+}
+.bar 
+{ 
+  background-color: rgb(72,181,163); 
+  width:0%; 
+  height:10px; 
+  border-radius: 3px; 
+}
+button.btn.btn-info.btn-lg{
+  background-color: rgb(72,181,163); 
+  padding: 4px 8px;
+  margin-left: -15px;
+}
+.percent 
+{ 
+  position:absolute; 
+  display:inline-block; 
+  top:3px; 
+  left:48%; 
+}
+
+
+
+.center {
+    margin: auto;
+    width: 100%;
+}
+
+.page-header{
+font-family:a;
+text-align:center;
+background-color:rgb(72,181,163);
+color: white;
+border-radius: 10px;
+padding-top: 3px;
+}
+.modal-header{
+  color: white;
+  background-color:rgb(72,181,163);
+}
+button.btn.btn-basic{
+  background-color: transparent;
+  border-color: transparent;
+  font-size: 20px;
+}
+button.btn.btn-basic:active{
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.overlay {
+    /* Height & width depends on how you want to reveal the overlay (see JS below) */    
+    height: 100%;
+    width: 100%;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+ background-color: rgb(72,181,163);
+  //  background-color:#00fa9a; /* Black fallback color */
+ //   background: -webkit-linear-gradient(left top, #48b5a3, #00fa9a); /* For Safari 5.1 to 6.0 */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.7s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+    position: relative;
+    top: 0%; /* 50% from the top */
+    width: 100%; /* 100% width */
+    text-align: center; /* Centered text/links */
+    margin-top: 100px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+    text-decoration: none;
+    font-family: myFirstFont2;
+    font-size: 86px;
+    color: white;
+    display: block; /* Display block instead of inline */
+}
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+      position: absolute;
+    top: 57%; /* 50% from the top */
+    width: 100%; /* 100% width */
+    text-align: center; /* Centered text/links */
+    margin-top: 100px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+	padding: 8px;
+ font-size: 40px;
+ animation-name: example;
+    animation-duration: 1s;
+ animation-iteration-count: infinite;
+animation-timing-function: ease-in;
+}
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes example {
+    from {top: 58%;}
+    to {top: 59%;}
+}
+
+/* Standard syntax */
+@keyframes example {
+    from {top: 58%;}
+    to {top: 59%;}
+}
+#myNav a{
+color: #555555;}
+
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+    .overlay  {font-size: 20px}
+    .overlay .closebtn {
+    font-size: 20px;
+    }
+}
+@font-face {
+    font-family: myFirstFont;
+    src: url(blackjack.otf);
+}
+@font-face {
+    font-family: myFirstFont1;
+    src: url(allura.otf);
+}
+@font-face {
+    font-family: myFirstFont2;
+    src: url(great.otf);
+}
+
+.navbar-collapse{
+padding-right: 30px;
+}
+
+#field {
+    margin-bottom:5x;
+}
+.form-control{
+  width: 50%;
+  display: inline;
+}
+.btn-danger{
+  margin-left: 5px;
+}
+#fields{
+  margin-left: 10px;
+}
+span.glyphicon.glyphicon-home {
+  padding-right: 15px;
+  color: white;
+  padding-top:15px;
+}
+
+button.navbar-toggle{
+  margin-top:-41px;
+}
+p#label1{
+  display: initial;
+  font-weight: 100;
+}
+p#label2{
+  display: initial;
+  font-weight: 100;
+}
+p#label3{
+  display: initial;
+  font-weight: 100;
+}
+p#label4{
+  display: initial;
+  font-weight: 100;
+}
+p#label5{
+  display: initial;
+  font-weight: 100;
+}
+p#label6{
+  display: initial;
+  font-weight: 100;'
+}
+p#label7{
+  display: initial;
+  font-weight: 100;
+}
+p#label8{
+  display: initial;
+  font-weight: 100;
+}
+
+
+</style>
+
+</head>
+<body>
+
+<div id="myNav" class="overlay">
+
+<!-- Overlay content -->
+  <div class="overlay-content">
+<img src="downlaod1.png" style="width:20%; height:20%;">
+    <p style="margin-top=20px;">Health Monitor</p> 
+  </div>
+<!-- Button to close the overlay navigation -->
+
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><span class="glyphicon glyphicon-chevron-up"></span></a>
+<div class="bottom"></div>
+</div>
+
+
+<!-- New page -->
+
+  <div class="center" id="new">
+  <!--<div class="title">Health Monitor Display Table</div>-->      
+
+ <div class="container" >
+ <!--
+ <div class="page-header">
+   <h1>Services Health Monitor</h1>
+   <span class="glyphicon glyphicon-home"></span>
+  </div> -->
+  <section>
+    <div class="page-header">
+      <div class="pull-right">
+        <div class="btn-group">
+          <!--<a href=#><span class="glyphicon glyphicon-home"></span></a>-->
+           <button class="btn btn-basic" onClick="refreshPage()">
+            <span class="glyphicon glyphicon-home"></span>
+          </button> 
+          </button>          
+        </div>
+      </div>
+       <h1 >
+        Services Health Monitor
+      </h1>
+      <div class="clearfix"></div>
+    </div>
+  </section>
+
+   <div class='progress' id="progress_div">
+    <div class='bar' id='bar1'></div>
+    <div class='percent' id='percent1'></div>
+  </div>
+ <input type="hidden" id="progress_width" value="0">
+
+
+<nav id="myNavbar" class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="container">
+            <div class="navbar-header">
+            <div class="row">
+   <div class="col-sm-5">Host_name: <label for="host_name">----------------Host_name----------------</label></div>
+  <div class="col-sm-5">I.P. Address: <label for="ip_name">----------------ip_address----------------</label></div>
+       
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                </div>
+               
+     
+         </div>       
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Check Here<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+			    <li> <a class="tablink" onclick="openTable('all_apps', this, 'green')"><span style="cursor:pointer">All Apps</span></a></li>
+                            <li> <a class="tablink" onclick="openTable('running_apps', this, 'green')"><span style="cursor:pointer">Running Apps</span></a></li>
+                            <li> <a class="tablink" onclick="openTable('halted_apps', this, 'green')"><span style="cursor:pointer">Halted Apps</span></a></li>
+                            <li> <a class="tablink" onclick="openTable('favourites', this, 'green')"><span style="cursor:pointer">Favourites</span></a></li>
+                            <li class="divider"></li>
+                            <li><a href="#"><!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Edit Favourites</button>
+</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div><!-- /.navbar-collapse -->
+           
+        </div>
+    </nav>
+
+ <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Favourite Services</h4>
+        </div>
+       <!-- <div class="modal-body">
+          <p>This is a small modal.</p>
+        </div>-->
+        <div class="container">
+          <div class="row">
+    <input type="hidden" name="count" value="1" />
+        <div class="control-group" id="fields">
+           <!-- <label class="control-label" for="field1">Nice Multiple Form Fields</label>-->
+            <div class="controls" id="profs"> 
+       <form class="input-append">
+                    <div id="field"><input autocomplete="off" class="input" id="field1" name="prof1" type="text" placeholder="Type something" data-items="8" style="width:50%;"
+                    />
+                    <button id="b1" class="btn add-more" type="button">+</button></div>
+                </form>
+            <small>Press + to add another form field :)</small>
+            </div>
+        </div>
+        </div>
+  </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Go</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="table-responsive" id="all_apps">          
+  <table class="table"  id = "tb">
+  <thead>
+      <tr>
+        <th>Service_Name</th>
+        <th>Status</th>
+	<th>Description</th>
+        <th>Type</th>
+        <th>Time</th>
+        <th>Details</th>
+      </tr>
+      </thead>
+    <tbody id="td" ></tbody>
+  </table>
+  </div>
+
+<div class="table-responsive" id="running_apps">          
+  <table class="table"  id = "tb1">
+    
+      <tr>
+        <th>Service_Name</th>
+	<th>Status</th>
+  <th>Description</th>
+        <th>Type</th>
+        <th>Time</th>
+        <th>Details</th>
+      </tr>
+    <tbody id="td1"></tbody>
+  </table>
+  </div>
+<div class="table-responsive" id="halted_apps">          
+  <table class="table"  id = "tb2">
+    
+      <tr>
+        <th>Service_Name</th>
+	<th>Status</th>
+  <th>Description</th>
+        <th>Type</th>
+        <th>Time</th>
+        <th>Details</th>
+      </tr>
+    <tbody id="td2"></tbody>
+  </table>
+  </div>
+<div class="table-responsive" id="favourites">          
+  <table class="table"  id = "tb3">
+    
+      <tr>
+        <th>Service_Name</th>
+	     <th>Status</th>
+  <th>Description</th>
+        <th>Type</th>
+        <th>Time</th>
+        <th>Details</th>
+      </tr>
+    <tbody id="td3"></tbody>
+  </table>
+  </div>
+</div>
+</div>
+
+
+ <!-- Modal -->
+  <div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="font-size: 25px;">Service Info</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+             <div class="col-sm-8 col-xs-8" style="font-weight: bold; line-height: 30px; font-size:17px;">
+              Service Name: <p  id="label1" ></p><br>
+              Description: <p id="label2"></p><br>
+              Status: <p id="label3"></p><br>
+              Service Type: <p id="label4">-----------</p><br>
+              Can Shut Down: <p id="label5">--------------</p><br>
+              Can Stop: <p id="label6">------------</p><br>
+              Can Pause Continue: <p id="label7">------------</p><br>
+              Services Depended On: <p id="label8">-----------</p><br>
+             </div>
+              <div class="col-sm-4 col-xs-4" style="font-weight: bold; line-height: 25px; font-size:20px;">Error log</div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<script>
+function openTable(cityName, elmnt, color) {
+    // Hide all elements with class="tabcontent" by default */
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("table-responsive");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+	 // Remove the background color of all tablinks/buttons
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "";
+    }
+    
+    // Show the specific tab content
+    document.getElementById(cityName).style.display = "block";
+
+}
+
+
+</script>
+
+</body>
+</html> 

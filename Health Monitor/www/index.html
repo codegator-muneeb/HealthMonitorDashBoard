@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="refresh" content="10">
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+    $(document).ready(setInterval(function() {
+        var url = "http://localhost/scripts/json.php";
+        $.getJSON(url, function(result) {
+            var tr;
+	  
+            console.log(result);
+            $.each(result, function(i, field) {
+                tr = $('<tr/>');
+                var name = field.Service_Name;
+                var status = field.Status;
+                var type = field.Service_Type;
+		var time = field.TIME;
+		
+                
+                tr.append("<td>" + name + "</td>");
+                tr.append("<td> <a href='www.google.com'>" + status + "</a></td>");
+                tr.append("<td>" + type + "</td>");
+                tr.append("<td>" + time + "</td>");
+			
+		$('#tb').append(tr)
+                
+            });
+        });
+    },5000));
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        var url = "http://localhost/scripts/json1.php";
+        $.getJSON(url, function(result) {
+            var tr;
+            console.log(result);
+            $.each(result, function(i, field) {
+                tr = $('<tr/>');
+                var name = field.Service_Name;
+                var status = field.Status;
+                var type = field.Service_Type;
+		var time = field.TIME;
+                
+                tr.append("<td>" + name + "</td>");
+                tr.append("<td> <a href='www.google.com'>" + status + "</a></td>");
+                tr.append("<td>" + type + "</td>");
+                tr.append("<td>" + time + "</td>");
+               
+                $('#tb1').append(tr)
+                
+            });
+        });
+    });
+
+  </script>
+   
+<script type="text/javascript">
+    $(document).ready(function() {
+        var url = "http://localhost/scripts/json2.php";
+        $.getJSON(url, function(result) {
+            var tr;
+            console.log(result);
+            
+            $.each(result, function(i, field) {
+                tr = $('<tr/>');
+                var name = field.Service_Name;
+                var status = field.Status;
+                var type = field.Service_Type;
+		var time = field.TIME;
+                
+                tr.append("<td>" + name + "</td>");
+                tr.append("<td> <a href='www.google.com'>" + status + "</a></td>");
+                tr.append("<td>" + type + "</td>");
+                tr.append("<td>" + time + "</td>");
+               
+                $('#tb2').append(tr)
+                
+            });
+        });
+    });
+
+  </script>
+
+<meta http-equiv="refresh" content="3000">
+<style>
+body {font-family: "Lato", sans-serif;  text-align:center; vertical-align:middle;}
+/* Style the tab buttons */
+.tablink {
+    background-color: black;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 25%;
+}
+
+/* Change background color of buttons on hover */
+.tablink:hover {
+    background-color: #777;
+}
+.back:hover {
+    background-color: #777;
+}
+
+/* Set default styles for tab content */
+.tabcontent {
+    color: white;
+    display: none;
+    padding: 50px;
+    text-align: center;
+}
+.topright {
+    float: right;
+    cursor: pointer;
+    font-size: 30px;
+font-weight: bold;
+}
+
+.topright:hover {color: black;}
+.complete_data{
+margin-left:12.15%;
+    width: 75.71%;
+}
+#all_apps {background-color:#000033;}
+#running_apps {background-color:green;}
+#halted_apps {background-color:rgb(130,0,0);}
+hr{
+margin-left: -50px;
+width: 110.5%;}
+
+//tr:hover{background-color:#777}
+th{
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+td{padding:12px;}
+table.clickable tr:hover { background-color: Gray; }
+    table.clickable tr > td { cursor: pointer; }
+    table.clickable tr > td > a { display: block; text-decoration: none; } 
+a:link {
+    color: white; 
+   
+}
+</style>
+
+</head>
+<body>
+
+<h2 style="align:left;">HEALTH MONITOR DATA DISPLAY</h2>
+
+
+<div class="tab">
+  <button class="tablink" onclick="openTable('all_apps',this, '#000033')">Present Apps</button>
+  <button class="tablink" onclick="openTable('running_apps', this, 'green')">Running Apps</button>
+  <button class="tablink" onclick="openTable('halted_apps', this, 'rgb(130,0,0)')">Halted Apps</button>
+</div>
+<div class= complete_data>
+<div id="all_apps" class="tabcontent"><hr>
+<span onclick="this.parentElement.style.display='none'" class="topright">x</span>
+
+  <h3>All Applications</h3>
+<hr>
+ 
+ <table class="clickable" id = "tb" cellpadding="0" cellspacing="0" style="width: 100%">
+
+    <tr>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Type</th>
+	<th>Time</th> 
+      </tr>
+
+    </table>
+</div>
+
+<div id="running_apps" class="tabcontent"><hr>
+<span onclick="this.parentElement.style.display='none'" class="topright">x</span>
+  <h3>Running Applications</h3>
+<hr>
+   
+     <table class="clickable"  id = "tb1" cellpadding="0" cellspacing="0" style="width: 100%">
+     <tr>
+         <th>Name</th>
+        <th>Status</th>
+        <th>Type</th>
+	<th>Time</th>  
+      </tr>
+    
+    </table>
+</div>
+
+<div id="halted_apps" class="tabcontent"><hr>
+<span onclick="this.parentElement.style.display='none'" class="topright">x</span>
+  <h3>Halted Applications</h3>
+<hr>
+  
+     <table class="clickable"  id = "tb2" cellpadding="0" cellspacing="0" style="width: 100%">
+     <tr>
+         <th>Name</th>
+        <th>Status</th>
+        <th>Type</th>
+	<th>Time</th> 
+      </tr>
+    
+    </table>
+</div>
+</div>
+<script>
+function openTable(cityName, elmnt, color) {
+    // Hide all elements with class="tabcontent" by default */
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Remove the background color of all tablinks/buttons
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "";
+    }
+
+    // Show the specific tab content
+    document.getElementById(cityName).style.display = "block";
+
+    // Add the specific color to the button used to open the tab content
+    elmnt.style.backgroundColor = color;
+}
+
+
+</script>
+</body>
+</html> 
